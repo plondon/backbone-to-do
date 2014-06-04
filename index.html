@@ -4,9 +4,33 @@
         <meta charset="utf-8">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Untitled</title>
-        <script type="text/template" id="item-template"></script>
-        <script type="text/template" id="stats-template"></script>
+        <title>To-Do MV*</title>
+        <link rel="stylesheet" href="assets/base.css">
+        <script type="text/template" id="item-template">
+            <div class="view">
+                <input type="checkbox" class="toggle" <%= completed ? 'checked' : '' %>>
+                <label><%- title %></label>
+                <button class="destroy"></button>
+            </div>
+            <input value="<%- title%>" class="edit">
+        </script>
+        <script type="text/template" id="stats-template">
+            <span id="todo-count"><strong><%= remaining %></strong>
+                <%= remaining === 1 ? 'item' : 'items' %>
+                left
+            </span>
+            <ul id="filters">
+                <li>
+                    <a href="#/" class="selected">All</a>
+                </li>
+                <li>
+                    <a href="#/active">Active</a>
+                </li>
+                <li>
+                    <a href="#/completed">Completed</a>
+                </li>
+            </ul>
+        </script>
         <script src="js/lib/jquery.js"></script>
         <script src="js/lib/underscore.js"></script>
         <script src="js/lib/backbone.js"></script>
@@ -19,5 +43,26 @@
     </head>
     <body>
 
+
+
+        <section id="todoapp">
+            <header id="header">
+                <h1>todos</h1>
+                <input id="new-todo" placeholder="What needs to be done?" autofocus>
+            </header>
+            <section id="main">
+                <input type="checkbox" id="toggle-all">
+                <label for="toggle-all">Mark all as complete</label>
+                <ul id="todo-list">
+                    
+                </ul>
+            </section>
+            <footer id="footer">
+                
+            </footer>
+        </section>
+        <div id="info">
+            <p>Double-click to edit a todo</p>
+        </div>
     </body>
 </html>
